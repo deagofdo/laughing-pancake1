@@ -7,6 +7,8 @@ import workout.model.WorkoutCollection;
 import java.util.List;
 
 @RestController
+@CrossOrigin
+
 public class CollectionController {
     private Collection collection;
 

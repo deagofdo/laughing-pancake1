@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import workout.model.WorkoutCollection;
 
 @Repository
-public interface CollectionRepository extends CrudRepository<WorkoutCollection,Integer>{
+public interface CollectionRepository extends CrudRepository<WorkoutCollection,Long>{
 }

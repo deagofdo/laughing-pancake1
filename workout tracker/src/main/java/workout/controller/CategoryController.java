@@ -7,6 +7,7 @@ import workout.model.WorkoutCategory;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 public class CategoryController {
 
     public CategoryController(Category category) {

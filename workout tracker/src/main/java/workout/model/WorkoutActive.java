@@ -8,8 +8,18 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 @Entity
 public class WorkoutActive extends AbstractPersistable<Long>{
+    public WorkoutCollection getCollection() {
+        return collection;
+    }
 
-    private int workout_id;
+    public void setCollection(WorkoutCollection collection) {
+        this.collection = collection;
+    }
+
+   @OneToOne(fetch = FetchType.EAGER,targetEntity =WorkoutCollection.class)
+    @JoinColumn(name = "workout_id")
+    private WorkoutCollection collection;
+   // private int workout_id;
    private LocalTime startTime;
     private LocalDate startDate;
     private LocalTime endTime;
@@ -17,14 +27,14 @@ public class WorkoutActive extends AbstractPersistable<Long>{
     private String comment;
     private boolean status;
 
-    public int getWorkout_id() {
+  /*  public int getWorkout_id() {
         return workout_id;
     }
 
     public void setWorkout_id(int workout_id) {
         this.workout_id = workout_id;
     }
-
+*/
     public LocalTime getStartTime() {
         return startTime;
     }

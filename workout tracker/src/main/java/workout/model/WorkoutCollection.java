@@ -1,5 +1,6 @@
 package workout.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;
@@ -8,7 +9,7 @@ import java.io.Serializable;
 @Entity
 @AttributeOverride(name = "id",column = @Column(name="workoutId"))
 
-public class WorkoutCollection extends AbstractPersistable<Integer> implements Serializable{
+public class WorkoutCollection extends AbstractPersistable<Long> implements Serializable{
     public String getWorkoutTitle() {
         return workoutTitle;
     }
@@ -33,17 +34,17 @@ public class WorkoutCollection extends AbstractPersistable<Integer> implements S
         this.caloriesBurnPerMin = caloriesBurnPerMin;
     }
 
-    public int getCategoryId() {
+   /* public int getCategoryId() {
         return categoryId;
     }
 
     public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
-    }
+    }*/
 private String workoutTitle;
 private String workoutNote;
 private float caloriesBurnPerMin;
-private int categoryId;
+//private int categoryId;
 
     public WorkoutCategory getCategory() {
         return category;
@@ -52,7 +53,9 @@ private int categoryId;
     public void setCategory(WorkoutCategory category) {
         this.category = category;
     }
-@ManyToOne
-@JoinColumn(name="categoryId")
+
+@OneToOne(fetch = FetchType.EAGER,targetEntity = WorkoutCategory.class)
+@JoinColumn(name = "category_id")
     private WorkoutCategory category;
+//private int categoryId;
 }

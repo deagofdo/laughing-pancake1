@@ -1,5 +1,6 @@
 package workout.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;
@@ -9,18 +10,18 @@ import java.util.List;
 @Entity
 
 @AttributeOverride(name = "id",column = @Column(name="categoryId"))
-@Table(name = "test")
-public class WorkoutCategory extends AbstractPersistable<Integer> implements Serializable{
-    public List<WorkoutCollection> getCollection() {
+public class WorkoutCategory extends AbstractPersistable<Long> implements Serializable{
+   /* public WorkoutCollection getCollection() {
         return collection;
     }
 
-    public void setCollection(List<WorkoutCollection> collection) {
+    public void setCollection(WorkoutCollection collection) {
         this.collection = collection;
-    }
-
+    }*/
+/*@JsonBackReference
     @OneToMany(targetEntity = WorkoutCollection.class,mappedBy = "category",fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
-private List<WorkoutCollection> collection;
+private List<WorkoutCollection> collection;*/
+
     private String categoryName;
     public String getCategoryName() {
         return categoryName;
